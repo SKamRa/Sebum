@@ -8,6 +8,7 @@ It won't allow persistence or Pivilege escalation yet.
 
 # Informations
 
+Note that Sebum is currently my main project. Now it is 2025 and I plan to commit alot on Github so keep staring at this repo!
 Now, Sebum works only on Unix based system.
 
 # Disclaimer

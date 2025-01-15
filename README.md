@@ -8,7 +8,6 @@ It won't allow persistence or Pivilege escalation yet.
 
 # Informations
 
-Note that Sebum is currently my main project. Now it is 2025 and I plan to commit alot on Github so keep staring at this repo!
 Now, Sebum works only on Unix based system.
 
 # Disclaimer
@@ -47,6 +46,9 @@ By proceeding with the use of this tool, you agree to take full responsibility f
 - [X] Get user's infos
     - [X] Get Clipboard content
     - [X] Get main folders content (/home; /opt; /var/www/html; /tmp)
+    - [X] Get target's location
+    - [] Screenshot of actual window (feature for v2)
+    - [] Screenshot of camera (feature for v2)
 
 - [] Get Bowser's infos
     - [] Get Borwser's cache
@@ -54,9 +56,11 @@ By proceeding with the use of this tool, you agree to take full responsibility f
     - [] Get Browser's cookies
     - [] Get Browser's Autofill infos
 
-- [] Configure multiple (5) Pastebin site api function for data recovery
-- [X] Get target's location
-- [] Code the disclaimer part (see XOSINT)
+
+- [] Exfiltration
+    - [X] Configure exfiltration function
+    - [] Configure multiple (5) Discord WebHook for data recovery
+
 
 - [] Botnet
     - [] Implement choice to either compile with auto destruction or to create a botnet zombie
@@ -64,8 +68,6 @@ By proceeding with the use of this tool, you agree to take full responsibility f
     - [] Add "Launch on Startup" feature -> crontab?
     - [] Capable of getting update (if useful)
     
-- [] Screenshot of actual window (feature for v2)
-- [] Screenshot of camera (feature for v2)
 
 - [] Post exploitation
     - [] Excrypt data to send
@@ -73,9 +75,12 @@ By proceeding with the use of this tool, you agree to take full responsibility f
     - [] Auto destruction
     - [] Code polymorphism methods
 
-- [] Organize the F* code
+- [] Misc
+    - [] Organize the F* code
     - [X] Look to include single header which include all headers itself
     - [] Interface
+    - [] Code the disclaimer part (see XOSINT)
+    - [] Make the banner
 
 ## To do list [SEBUM WEBSITE]
 - [] Create the website

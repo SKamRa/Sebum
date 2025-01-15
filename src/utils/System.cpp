@@ -271,4 +271,4 @@ namespace System {
   }
 }
 
-// Regarder pour quand le clipboard est vide il y a une std::logic_error
+// Look for std::logic_error when clipboard's empty

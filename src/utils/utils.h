@@ -7,6 +7,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include "./base64.hpp"
+
 #include <iostream>
 #include <vector>
 #include <string>

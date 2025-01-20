@@ -16,10 +16,10 @@ namespace Utils {
         std::string concatDatas {""};
 
         for (int i {0}; i < dataList.size(); i++) {
-            concatDatas += dataList[i];
-            concatDatas += "===================================================\n";
+            concatDatas += base64::to_base64(dataList[i] + "\n===================================================\n");
         }
 
         return concatDatas;
     }
+
 }

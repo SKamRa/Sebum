@@ -75,12 +75,22 @@ By proceeding with the use of this tool, you agree to take full responsibility f
     - [] Auto destruction
     - [] Code polymorphism methods
 
+- [] Detection
+    - [] Detect if victim's system is a Honeypot
+    - [] Detect if victim's system is a VM
+    - [] Detect if victim's system has already been compromised
+
 - [] Misc
     - [] Organize the F* code
     - [X] Look to include single header which include all headers itself
     - [] Interface
     - [] Code the disclaimer part (see XOSINT)
     - [] Make the banner
+
+
+## To do list [SEBUM BUILDER]
+- [] Define the options
+- [] Code the GUI
 
 ## To do list [SEBUM WEBSITE]
 - [] Create the website

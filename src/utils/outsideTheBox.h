@@ -7,7 +7,7 @@
 #ifndef OUTSIDETHEBOX_H
 #define OUTSIDETHEBOX_H
 
-#include <curl/curl.h>
+#include "curl/curl.h"
 #include <sstream>
 #include <iostream>
 #include <string>

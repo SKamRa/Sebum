@@ -86,6 +86,7 @@ By proceeding with the use of this tool, you agree to take full responsibility f
     - [] Interface
     - [] Code the disclaimer part (see XOSINT)
     - [] Make the banner
+    - [] Make the project beautiful logo
 
 
 ## To do list [SEBUM BUILDER]

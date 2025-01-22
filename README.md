@@ -10,6 +10,9 @@ It won't allow persistence or Pivilege escalation yet.
 
 Now, Sebum works only on Unix based system.
 
+# Currently working on :
+The GUI
+
 # Disclaimer
 
 **Sebum** is a demonstration tool developed for educational and ethical purposes only.
